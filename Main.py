@@ -13,7 +13,7 @@ def display(size, unit_amount):
 
 import Group, random, time, os
 x = Group.Group()
-size = 50
+size = 20
 for i in range(size):
     randx = random.randrange(0,5)
     randy = random.randrange(0,5)

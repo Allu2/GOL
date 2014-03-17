@@ -6,7 +6,7 @@ class Group:
     def __init__(self):
         self.indx = 0
         self.creatures = []
-        self.locations = []
+        self.locations = set()
 
     def isUnit(self, x, y):
         locations = self.locations
