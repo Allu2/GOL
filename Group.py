@@ -6,9 +6,10 @@ class Group:
     def __init__(self):
         self.indx = 0
         self.creatures = []
+        self.locations = []
 
     def isUnit(self, x, y):
-        locations = self.getLocations()
+        locations = self.locations
         #print(locations)
         query = [x, y]
         #print(query)
@@ -34,12 +35,12 @@ class Group:
         locations = []
         for i in self.getCreatures():
             locations.append(i.getPosition())
-        return locations
+        self.locations = locations
 
     def createCreature(self, x, y):
-        locations = self.getLocations()
+        self.getLocations()
         lista = self.getCreatures()
-        if [x, y] in locations:
+        if [x, y] in self.locations:
             pass
         else:
             self.creatures.append(Unit.Unit(x, y))
@@ -49,7 +50,7 @@ class Group:
 
     def setNeighs(self):
         lista = self.getCreatures()
-        locations = self.getLocations()
+        locations = self.locations
         #print(locations)
         for i in lista:
             position = i.getPosition()
@@ -74,7 +75,7 @@ class Group:
             #print("This unit has: "+str(i.neigh)+" neighbours.")
 
     def hasNeigh(self, x, y):
-        locations = self.getLocations()
+        locations = self.locations
         #print(locations)
         position = [x, y]
         possible_neighs = self.solveri(position)

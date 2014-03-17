@@ -27,7 +27,7 @@ generation = 0
 while indi > 0:
     start_t = time.time()
     x.setNeighs()
-    q = 0
+    #q = 0
     lista = x.getCreatures()
     #print(lista)
     for i in lista:
