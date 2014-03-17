@@ -47,7 +47,7 @@ while indi>0:
                 if neighs == 3:
                     x.createCreature(i, f)
     os.system('cls' if os.name == 'nt' else 'clear')
-    #display(size, unit_amount)
+    display(size, unit_amount)
     end_t = time.time()
     total_t = end_t-start_t
     print("Generation {} \nTotal number of cells: {}\nTime spend calculating:{}".format(generation,len(x.getCreatures()), total_t))
