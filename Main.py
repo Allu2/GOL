@@ -7,17 +7,18 @@ def display(size, unit_amount):
             if x.isUnit(c, y):
                 marks.append("0 ")
             else:
-                marks.append("* ")
+                marks.append("- ")
         marks.append("\n")
     print(''.join(marks))
 
 import Group, random, time, os
 x = Group.Group()
-size = 20
+size = 35
 for i in range(size):
     randx = random.randrange(0,5)
     randy = random.randrange(0,5)
     x.createCreature(randx, randy)
+
 x.setNeighs()
 unit_amount = len(x.getCreatures())
 #print("Point 3,3 has {} neighbours".format(x.hasNeigh(3,3)))
@@ -47,7 +48,7 @@ while indi > 0:
     display(size, unit_amount)
     end_t = time.time()
     total_t = end_t-start_t
-    print("Generation {} \nTotal number of cells: {}\nTime spend calculating:{}".format(generation,len(x.getCreatures()), total_t))
+    print("Generation: {} \nTotal number of cells: {}\nTime spend calculating: {}".format(generation,len(x.getCreatures()), total_t))
     indi -= 1
     generation += 1
     time.sleep(0.01)
