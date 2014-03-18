@@ -3,12 +3,14 @@ import Unit
 
 
 class Group:
-    def __init__(self):
+    def __init__(self, coords):
         self.indx = 0
+        self.coords = coords
         self.creatures = []
         self.locations = set()
 
     def isUnit(self, x, y):
+        self.getLocations()
         locations = self.locations
         #print(locations)
         query = [x, y]
@@ -39,7 +41,6 @@ class Group:
 
     def createCreature(self, x, y):
         self.getLocations()
-        lista = self.getCreatures()
         if [x, y] in self.locations:
             pass
         else:
@@ -49,34 +50,20 @@ class Group:
         return self.creatures
 
     def setNeighs(self):
-        lista = self.getCreatures()
+        lista = self.creatures
         locations = self.locations
-        #print(locations)
         for i in lista:
             position = i.getPosition()
             possible_neighs = self.solveri(position)
-            #print("Position1:{}".format(position))
-            #print("Possible Neighbours:{}".format(possible_neighs))
-            #print("Neighs")
-            #print(neighs)
-            #print("Units:{}".format(locations))
             hits = 0
             for y in locations:
                 for x in possible_neighs:
                     if y == x:
                         hits += 1
-                #hits = list(set(locations[0]).intersection(possible_neighs[0]))
-            #print("Hits:{}".format(hits))
-            #print(hits)
             i.setNeigh(hits)
-
-            #for i in lista:
-            #print(i)
-            #print("This unit has: "+str(i.neigh)+" neighbours.")
 
     def hasNeigh(self, x, y):
         locations = self.locations
-        #print(locations)
         position = [x, y]
         possible_neighs = self.solveri(position)
         hits = 0
