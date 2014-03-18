@@ -15,8 +15,8 @@ import Group, random, time, os
 x = Group.Group()
 size = 35
 for i in range(size):
-    randx = random.randrange(0,5)
-    randy = random.randrange(0,5)
+    randx = random.randrange(0,10)
+    randy = random.randrange(20,35)
     x.createCreature(randx, randy)
 
 x.setNeighs()
@@ -25,7 +25,7 @@ unit_amount = len(x.getCreatures())
 display(size, unit_amount)
 indi = 10000
 generation = 0
-while indi > 0:
+for indi in range(10000):
     start_t = time.time()
     x.setNeighs()
     #q = 0
@@ -38,7 +38,7 @@ while indi > 0:
             pass
         if i.neigh<2:
             x.creatures.remove(i)
-    for i in range(size):
+    for i in range(size): #Insert optimization!
         for f in range(size):
             if not x.isUnit(i, f):
                 neighs = x.hasNeigh(i, f)
